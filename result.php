@@ -171,12 +171,12 @@ $history=$historyStmt->get_result();
 /* ---------- Icons ---------- */
 
 $icons=[
-"Password"=>"🔑",
-"Device"=>"📱",
-"Privacy"=>"🌐",
-"Phishing"=>"📧",
-"Network"=>"📶",
-"Social"=>"👥"
+"Password"=>"key",
+"Device"=>"device",
+"Privacy"=>"globe",
+"Phishing"=>"mail",
+"Network"=>"wifi",
+"Social"=>"users"
 ];
 
 ?>
@@ -203,7 +203,7 @@ $icons=[
 
 <div class="status-row">
 
-<span class="status-badge">🛡 Assessment Completed</span>
+<span class="status-badge">Assessment complete</span>
 
 <span class="status-badge"><?= date("d M Y") ?></span>
 
@@ -251,23 +251,23 @@ style="stroke-dashoffset:<?=565-(565*$overall/100)?>;"
 
 </div>
 
-<!-- Cyber Twin -->
+<!-- Security Profile -->
 
 <div class="cyber-avatar">
 
 <div class="shield-container <?= strtolower(str_replace(' ','-',$risk)) ?>">
 
-<div class="shield-core">🛡</div>
+<div class="shield-core" aria-hidden="true"><svg class="icon icon-large"><use href="assets/cyberrisk-icons.svg#shield"></use></svg></div>
 
 <div class="shield-ring"></div>
 
 </div>
 
-<h3 class="avatar-title">Cyber Twin</h3>
+<h3 class="avatar-title">Security Profile</h3>
 
 <p class="avatar-text">
 
-Your digital shield represents your current cybersecurity posture.
+Your score summarizes your current security habits.
 
 </p>
 
@@ -277,28 +277,24 @@ if($overall>=80){
 
 $threat="Minimal Exposure";
 $badge="low-risk";
-$icon="🟢";
 
 }
 elseif($overall>=60){
 
 $threat="Moderate Exposure";
 $badge="moderate-risk";
-$icon="🔵";
 
 }
 elseif($overall>=40){
 
 $threat="Elevated Exposure";
 $badge="high-risk";
-$icon="🟠";
 
 }
 else{
 
 $threat="Critical Exposure";
 $badge="critical-risk";
-$icon="🔴";
 
 }
 
@@ -310,7 +306,7 @@ $icon="🔴";
 
 <div class="threat-badge <?= $badge ?>">
 
-<?= $icon ?> <?= htmlspecialchars($threat) ?>
+<?= htmlspecialchars($threat) ?>
 
 </div>
 
@@ -394,7 +390,7 @@ These scores represent your cybersecurity habits across six key areas.
 
 <div class="progress-header">
 
-<span><?= $icons[$cat] ?> <?= htmlspecialchars($cat) ?></span>
+<span><svg class="icon" aria-hidden="true"><use href="assets/cyberrisk-icons.svg#<?= $icons[$cat] ?>"></use></svg> <?= htmlspecialchars($cat) ?></span>
 
 <span class="score-label <?= $score<40?'danger':($score<70?'warning':'good') ?>">
 
@@ -423,11 +419,11 @@ style="width:<?= $score ?>%;"
 
 <div class="card">
 
-<h2>⚠ Personalized Attack Path Simulation</h2>
+<h2>Risk Path</h2>
 
 <p class="section-desc">
 
-Educational simulation showing how weaker security habits may increase exposure to cyber threats.
+How gaps in your habits can increase exposure to common threats.
 
 </p>
 
@@ -456,22 +452,22 @@ Educational simulation showing how weaker security habits may increase exposure 
 <?php
 
 if($final["Password"]<60)
-echo "<p>🔑 Enable two-factor authentication and use unique passwords.</p>";
+echo "<p>Enable two-factor authentication and use unique passwords.</p>";
 
 if($final["Privacy"]<60)
-echo "<p>🌐 Reduce publicly visible personal information.</p>";
+echo "<p>Limit personal information visible on public profiles.</p>";
 
 if($final["Phishing"]<60)
-echo "<p>📧 Verify suspicious emails before clicking links.</p>";
+echo "<p>Verify suspicious messages before opening links.</p>";
 
 if($final["Network"]<60)
-echo "<p>📶 Avoid risky activity on public Wi-Fi.</p>";
+echo "<p>Avoid sensitive activity on public Wi-Fi.</p>";
 
 if($final["Device"]<60)
-echo "<p>📱 Keep your devices updated.</p>";
+echo "<p>Install device updates promptly.</p>";
 
 if($final["Social"]<60)
-echo "<p>👥 Review your social-media privacy settings.</p>";
+echo "<p>Review your social media privacy settings.</p>";
 
 ?>
 
@@ -489,7 +485,7 @@ foreach($final as $cat=>$score){
 
 if($score>=80){
 
-echo "<p>✅ Excellent ".$cat." security practices.</p>";
+echo "<p>Excellent ".$cat." security practices.</p>";
 
 }
 
@@ -540,30 +536,28 @@ Track how your CyberRisk score changes over time.
 </div>
 
 <button onclick="location.href='download_report.php'">
-    📄 Download CyberRisk Audit Report
+    Download report
 </button>
 
 <button onclick="location.href='dashboard.php'">
-    ⬅ Back to Dashboard
+    Dashboard
 </button>
 
 </div>
 
-<!-- ================= CYBER COACH ================= -->
+<!-- ================= REPORT HELP ================= -->
 
-<div id="chatButton" class="chat-button">
-
-💬
-
-</div>
+<button id="chatButton" class="chat-button" type="button" aria-label="Open report help">
+<svg class="icon" aria-hidden="true"><use href="assets/cyberrisk-icons.svg#message"></use></svg>
+</button>
 
 <div id="chatWindow" class="chat-window">
 
 <div class="chat-header">
 
-🛡 Cyber Coach
+Report Help
 
-<span id="closeChat">✖</span>
+<button id="closeChat" type="button" aria-label="Close report help">Close</button>
 
 </div>
 
@@ -571,11 +565,7 @@ Track how your CyberRisk score changes over time.
 
 <div class="bot-message">
 
-Hi <?= htmlspecialchars($_SESSION["user_name"]) ?> 👋
-
-I'm Cyber Coach.
-
-Ask me about your security report.
+Review your results or choose a topic below.
 
 </div>
 
@@ -585,25 +575,25 @@ Ask me about your security report.
 
 <button class="chat-option">
 
-Why is my score low?
+Score details
 
 </button>
 
 <button class="chat-option">
 
-Improve Password Security
+Password tips
 
 </button>
 
 <button class="chat-option">
 
-Explain Phishing
+Phishing basics
 
 </button>
 
 <button class="chat-option">
 
-How can I become Low Risk?
+Lower my risk
 
 </button>
 
@@ -612,6 +602,9 @@ How can I become Low Risk?
 </div>
 
 <script>
+
+Chart.defaults.color="#9c9c9d";
+Chart.defaults.borderColor="#363739";
 
 new Chart(
 
@@ -652,11 +645,12 @@ data:[
 
 ],
 
-borderColor:"#38bdf8",
+borderColor:"#ff6363",
 
-backgroundColor:"rgba(56,189,248,.2)",
+backgroundColor:"rgba(255,99,99,.16)",
 
-pointBackgroundColor:"#60a5fa"
+pointBackgroundColor:"#e6e6e6",
+pointBorderColor:"#ff6363"
 
 }]
 
@@ -677,9 +671,9 @@ r:{
 min:0,
 max:100,
 ticks:{display:false},
-grid:{color:"#475569"},
-angleLines:{color:"#475569"},
-pointLabels:{color:"white"}
+grid:{color:"#363739"},
+angleLines:{color:"#363739"},
+pointLabels:{color:"#e6e6e6"}
 }
 }
 
@@ -699,7 +693,7 @@ const overallScore=<?=$overall?>;
 
 const answers={
 
-"Why is my score low?":
+"Score details":
 
 overallScore>=80
 
@@ -707,15 +701,15 @@ overallScore>=80
 
 :"Your weakest area is "+weakestCategory+". Improving that category first will increase your overall score the fastest.",
 
-"Improve Password Security":
+"Password tips":
 
 "Use unique passwords, enable 2FA, and consider a password manager.",
 
-"Explain Phishing":
+"Phishing basics":
 
 "Phishing is when attackers trick people into revealing passwords or personal information through fake emails, messages, or websites.",
 
-"How can I become Low Risk?":
+"Lower my risk":
 
 "Focus on improving your weakest category, keep devices updated, avoid suspicious links, and use strong passwords."
 

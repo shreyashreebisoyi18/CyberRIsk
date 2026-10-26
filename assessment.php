@@ -42,17 +42,17 @@ $totalSteps = count($categories);
 
 <p class="section-desc">
 
-Complete all six sections to generate your personalized CyberRisk profile.
+Answer all six sections to view your CyberRisk profile.
 
 </p>
 
 <div class="status-row">
 
-<span class="status-badge">📝 24 Questions</span>
+<span class="status-badge">24 questions</span>
 
-<span class="status-badge">⏱ 3–4 Minutes</span>
+<span class="status-badge">3–4 minutes</span>
 
-<span class="status-badge">🔒 Secure Assessment</span>
+<span class="status-badge">Secure assessment</span>
 
 </div>
 
@@ -186,7 +186,7 @@ value="d">
 
 <button type="button" class="prevBtn">
 
-⬅ Previous
+Previous
 
 </button>
 
@@ -196,7 +196,7 @@ value="d">
 
 <button type="button" class="nextBtn">
 
-Next ➜
+Next
 
 </button>
 
@@ -204,7 +204,7 @@ Next ➜
 
 <button type="submit">
 
-🛡 Generate My CyberRisk Profile
+View profile
 
 </button>
 

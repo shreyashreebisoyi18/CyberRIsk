@@ -36,42 +36,8 @@ $categories=[
 "Social"=>$data["social_score"]
 ];
 
-/* Cyber Twin */
-
 $weakest=array_keys($categories,min($categories))[0];
-
-switch($weakest){
-
-case "Password":
-$twin="Guardian Lock";
-$summary="Your biggest opportunity is strengthening passwords and enabling Two-Factor Authentication.";
-break;
-
-case "Device":
-$twin="Device Defender";
-$summary="Keeping devices updated will significantly improve your protection.";
-break;
-
-case "Privacy":
-$twin="Privacy Shield";
-$summary="Reducing public exposure online will improve your security.";
-break;
-
-case "Phishing":
-$twin="Link Detective";
-$summary="Learning to verify suspicious links before clicking will strengthen your score.";
-break;
-
-case "Network":
-$twin="Safe Navigator";
-$summary="Avoiding risky public Wi-Fi will improve your cyber safety.";
-break;
-
-default:
-$twin="Social Sentinel";
-$summary="Being cautious with unknown profiles will strengthen your online safety.";
-
-}
+$focusArea=$weakest;
 
 /* ---------- PDF ---------- */
 
@@ -154,13 +120,13 @@ $pdf->SetFillColor(239,68,68);
 $pdf->SetFont("Arial","B",15);
 $pdf->Cell(0,12,"Risk Level: ".$data["risk_level"],0,1,"C",true);
 
-/* Cyber Twin */
+/* Security focus */
 
 $pdf->Ln(12);
 
 $pdf->SetTextColor(20);
 $pdf->SetFont("Arial","B",16);
-$pdf->Cell(0,10,"Cyber Twin Profile",0,1);
+$pdf->Cell(0,10,"Security Focus",0,1);
 
 $pdf->SetFillColor(235,245,255);
 $pdf->Rect(20,$pdf->GetY(),170,28,'F');
@@ -168,14 +134,14 @@ $pdf->Rect(20,$pdf->GetY(),170,28,'F');
 $pdf->SetXY(25,$pdf->GetY()+4);
 
 $pdf->SetFont("Arial","B",13);
-$pdf->Cell(0,8,$twin);
+$pdf->Cell(0,8,$focusArea);
 
 $pdf->Ln(8);
 
 $pdf->SetX(25);
 
 $pdf->SetFont("Arial","",11);
-$pdf->MultiCell(155,6,$summary);
+$pdf->MultiCell(155,6,"Focus on this area to improve your overall security score.");
 
 /* PAGE 2 */
 

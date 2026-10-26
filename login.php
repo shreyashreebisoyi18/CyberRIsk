@@ -101,7 +101,7 @@ required
 autocomplete="current-password">
 
 <button type="submit">
-🔐 Login Securely
+Log in
 </button>
 
 </form>

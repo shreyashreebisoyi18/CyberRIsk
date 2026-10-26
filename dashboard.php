@@ -22,12 +22,12 @@ require_once "includes/auth.php";
 <div class="container">
 
     <h1>
-        Welcome, <?= htmlspecialchars($_SESSION["user_name"]) ?> 👋
+        Welcome, <?= htmlspecialchars($_SESSION["user_name"]) ?>
     </h1>
 
     <div class="status-row">
 
-        <span class="status-badge">🔐 Secure Session</span>
+        <span class="status-badge">Secure session</span>
 
         <span class="status-badge">
             <?= htmlspecialchars(ucfirst($_SESSION["role"])) ?>
@@ -44,9 +44,7 @@ require_once "includes/auth.php";
         <h2>Your CyberRisk Dashboard</h2>
 
         <p>
-            Welcome back! Your account is securely authenticated.
-            Take a CyberRisk Assessment to analyse your cybersecurity habits
-            across six key security categories.
+            Review your profile or take an assessment across six security areas.
         </p>
 
     </div>
@@ -56,19 +54,19 @@ require_once "includes/auth.php";
         <h2>Quick Actions</h2>
 
         <button onclick="location.href='assessment.php'">
-            📝 Take CyberRisk Assessment
+            Take assessment
         </button>
 
         <?php if ($_SESSION["role"] == "admin"): ?>
 
             <button onclick="location.href='admin_dashboard.php'">
-                📊 Open Admin Dashboard
+                Admin dashboard
             </button>
 
         <?php endif; ?>
 
         <button onclick="location.href='logout.php'">
-            🚪 Logout
+            Log out
         </button>
 
     </div>

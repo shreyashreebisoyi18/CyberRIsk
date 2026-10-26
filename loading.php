@@ -21,14 +21,14 @@ require_once "includes/auth.php";
 
 <div class="loading-container">
 
-    <div class="loading-shield">
-        🛡
+    <div class="loading-shield" aria-hidden="true">
+        <svg class="icon icon-large"><use href="assets/cyberrisk-icons.svg#shield"></use></svg>
     </div>
 
     <h1>CyberRisk</h1>
 
     <p id="loadingText">
-        Initializing secure environment...
+        Preparing your account...
     </p>
 
     <div class="loading-bar">
@@ -39,7 +39,7 @@ require_once "includes/auth.php";
 
     <div class="loading-status">
 
-        <span>Security Scan</span>
+        <span>Account setup</span>
 
         <span id="percent">0%</span>
 
@@ -56,11 +56,11 @@ const text=document.getElementById("loadingText");
 const p=document.getElementById("percent");
 
 const messages=[
-"Initializing secure environment...",
-"Verifying encrypted session...",
-"Loading CyberRisk profile...",
-"Scanning security posture...",
-"Access granted."
+"Preparing your account...",
+"Checking your session...",
+"Loading your profile...",
+"Preparing your dashboard...",
+"Ready."
 ];
 
 let msg=0;

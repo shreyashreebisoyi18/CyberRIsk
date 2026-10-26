@@ -146,7 +146,7 @@ ORDER BY assessments.created_at DESC"
 
 <div class="status-row">
 
-<span class="status-badge">🛡 Admin Access</span>
+<span class="status-badge"><svg class="icon" aria-hidden="true"><use href="assets/cyberrisk-icons.svg#shield"></use></svg> Admin access</span>
 
 <span class="status-badge"><?=date("d M Y")?></span>
 
@@ -160,7 +160,7 @@ ORDER BY assessments.created_at DESC"
 
     <div class="soc-warning">
 
-        <div class="soc-icon">⚠</div>
+        <div class="soc-icon"><svg class="icon icon-large" aria-hidden="true"><use href="assets/cyberrisk-icons.svg#alert"></use></svg></div>
 
         <div>
 
@@ -184,7 +184,7 @@ ORDER BY assessments.created_at DESC"
 
     <div class="soc-safe">
 
-        <div class="soc-icon">🛡</div>
+        <div class="soc-icon"><svg class="icon icon-large" aria-hidden="true"><use href="assets/cyberrisk-icons.svg#shield"></use></svg></div>
 
         <div>
 
@@ -322,13 +322,13 @@ $class=strtolower(str_replace(" ","-",$row["risk_level"]));
 
 <button onclick="location.href='export.php'">
 
-📥 Download CSV Report
+Download CSV
 
 </button>
 
 <button onclick="location.href='dashboard.php'">
 
-⬅ Back to Dashboard
+Dashboard
 
 </button>
 
@@ -354,6 +354,9 @@ rows[i].innerText.toUpperCase().includes(filter)
 
 /* PIE */
 
+Chart.defaults.color="#9c9c9d";
+Chart.defaults.borderColor="#363739";
+
 new Chart(
 
 document.getElementById("pieChart"),
@@ -373,7 +376,10 @@ data:[
 <?=$riskData["Moderate Risk"]?>,
 <?=$riskData["High Risk"]?>,
 <?=$riskData["Critical Risk"]?>
-]
+],
+backgroundColor:["#59d499","#9c9c9d","#f2a36b","#ff6363"],
+borderColor:"#07080a",
+borderWidth:2
 
 }]
 
@@ -405,7 +411,11 @@ data:<?=json_encode($trendScores)?>,
 
 fill:true,
 
-tension:.35
+tension:.35,
+borderColor:"#ff6363",
+backgroundColor:"rgba(255,99,99,.12)",
+pointBackgroundColor:"#e6e6e6",
+pointBorderColor:"#ff6363"
 
 }]
 
@@ -440,7 +450,10 @@ data:[
 <?=$category["Phishing"]?:0?>,
 <?=$category["Network"]?:0?>,
 <?=$category["Social"]?:0?>
-]
+],
+backgroundColor:"rgba(255,99,99,.72)",
+borderColor:"#ff6363",
+borderWidth:1
 
 }]
 
